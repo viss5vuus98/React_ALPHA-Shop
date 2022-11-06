@@ -1,0 +1,10 @@
+.left_content {
+  margin: 100px 165px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  margin-bottom: 1.5rem;
+}

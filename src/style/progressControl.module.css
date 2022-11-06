@@ -1,0 +1,47 @@
+.button_control {
+  width: 100%;
+  border-top: 1px solid #E6E6EB;
+}
+
+.group {
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  width: 150px;
+  height: 46px;
+  border-radius: 8px;
+  font-size: 14px;
+  position: relative;
+}
+
+
+.next {
+  width: 174px;
+  background-color: #F67599;
+  color: #fff;
+  padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prev {
+  color: #000;
+  background-color: #fff;
+  padding-right: 25px;
+}
+/* icons */
+.icon {
+  width: 30%;
+  height: 50%;
+}
+
+.left_icon {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  left: -10px;
+}

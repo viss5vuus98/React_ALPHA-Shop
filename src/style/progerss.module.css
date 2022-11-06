@@ -1,0 +1,69 @@
+/* container */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* step */
+.step {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* circle */
+.circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #AFB1BD;
+  margin-right: 8px;
+  position: relative;
+}
+.circle::after {
+  color: #AFB1BD;
+  font-size: 12px;
+  position: absolute;
+  top: 3px;
+  right: 50%;
+  transform: translateX(50%)
+}
+.step:nth-child(1) .circle::after {
+  content: "1";
+}
+.step:nth-child(2) .circle::after {
+  content: "2";
+}
+.step:nth-child(3) .circle::after {
+  content: "3";
+}
+
+.step.checked .circle{
+  background-color: #000;
+}
+.step.checked .circle::after {
+  color: #fff
+}
+/* label */
+
+.label {
+  font-size: 16px;
+  color: #AFB1BD;
+}
+
+.step.checked .label {
+  color: #000;
+}
+
+/* connect line */
+
+.connectLine {
+  height: 1px;
+  background-color: #000;
+  position: absolute;
+  top: 50%;
+  right: calc(-10% + 30px);
+  left: calc( 50% + 30px);
+}
