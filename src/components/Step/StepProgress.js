@@ -1,10 +1,10 @@
 import styles from '../../style/progerss.module.css'
 
-function ConnectLine({label}) {
+function ConnectLine() {
   return <span className={styles.connectLine}></span>
 }
 
-function Step({label, num}){
+function Step({label}){
   return (
       <div className={`${styles.step} ${styles.checked}`}>
         <div className={styles.circle}></div>
