@@ -61,7 +61,7 @@ export default function StepProgress({currentStep}){
       }
     })
     setSteps(currentSteps)
-  }, [currentStep, steps])
+  }, [currentStep])
 
   return (
     <section className={styles.container}>
