@@ -40,10 +40,16 @@
   content: "3";
 }
 
-.step.checked .circle{
+/* not active */
+.step .circle::after{
+  color: #AFB1BD;
+}
+
+/* active */
+.step.active .circle{
   background-color: #000;
 }
-.step.checked .circle::after {
+.step.active .circle::after {
   color: #fff
 }
 /* label */
@@ -53,7 +59,7 @@
   color: #AFB1BD;
 }
 
-.step.checked .label {
+.step.active .label {
   color: #000;
 }
 
@@ -67,4 +73,9 @@
   margin: 0px 8px;
   border-width: 2px;
   border-style: solid;
+  color: #AFB1BD
+}
+
+.connectLine.active {
+  color: #000;
 }

@@ -1,37 +1,72 @@
-import styles from '../../style/progerss.module.css'
+import { useState, useEffect } from 'react'
+import styles from '../../style/progress.module.css'
 
-function ConnectLine() {
-  return <span className={styles.connectLine}></span>
-}
+const stepList = [
+  {
+    id: 1,
+    label: '寄送地址',
+    num: 1,
+    state: true 
+  },
+  {
+    id: 2,
+    label: '運送方式',
+    num: 1,
+    state: false
+  },
+  {
+    id: 3,
+    label: '付款資訊',
+    num: 1,
+    status: false
+  }
+]
 
-function Step({label}){
+function Step({steps}){
+
+  const renderStep = steps.map(step => {
+    if(step.id < stepList.length ){
+      return <>    
+              <div key={step.id} className={`${styles.step} ${step.state? styles.active : null}`}>
+                <div className={styles.circle}></div>
+                <div className={styles.label}>{step.label}</div>    
+              </div>
+              <span className={`${styles.connectLine} ${step.state? styles.active : null}`}></span>
+            </>
+    }
+      return <div key={step.id} className={`${styles.step} ${step.state? styles.active : null}`}>
+                <div className={styles.circle}></div>
+                <div className={styles.label}>{step.label}</div>    
+              </div>
+  })
   return (
-      <div className={`${styles.step} ${styles.checked}`}>
-        <div className={styles.circle}></div>
-        <div className={styles.label}>{label}</div>    
-      </div>
+    renderStep
   )
 }
 
-export default function Progress(){
+export default function StepProgress({currentStep}){
+  const [ steps, setSteps ] = useState(stepList)
+
+  useEffect(() => {
+    const currentSteps = steps.map(step => {
+      if(step.id <= currentStep){
+        return {
+          ...step,
+          state: true
+        }
+      }
+      return {
+        ...step,
+        state: false
+      }
+    })
+    setSteps(currentSteps)
+  }, [currentStep, steps])
+
   return (
     <section className={styles.container}>
-      <Step         
-        label={'寄送地址'}
-        num={1}
-      />
-      <ConnectLine
-      />  
-      <Step 
-        label={'運送方式'}
-         num={2}
-      />
-      <ConnectLine
-      />        
-      <Step 
-        label={'付款資訊'}
-         num={3}
-      />
+      <Step steps={steps}/>
     </section>
   )
 }
+

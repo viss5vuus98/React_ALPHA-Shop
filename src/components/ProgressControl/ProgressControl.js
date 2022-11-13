@@ -23,11 +23,11 @@ export default function ProgressControl(props) {
   return (
     <section className={styles.button_control}>
       <section className={styles.group}>
-        <BtnControl step={props.step}/>
         <button className={styles.next} onClick={handleClick}>
-          <p>下一步</p>
+          <p>{props.step === 3 ? '確認下單': '下一步'}</p>
           <img src={rightArrowIco} className={`${styles.icon} ${styles.right_icon}`} alt="next" />
         </button>
+        <BtnControl step={props.step}/>
       </section>
     </section>
   )

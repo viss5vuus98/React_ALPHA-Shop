@@ -1,5 +1,8 @@
 /* form */
-
+.form {
+  width: 100%;
+  flex: 1;
+}
 /* title */
 .title {
   composes: title from "./address.module.css";

@@ -18,7 +18,7 @@ const FormControl = (step) => {
 export default function LeftContent(props) {
   return (
     <div className={styles.left_content}>
-        <StepProgress/>
+        <StepProgress currentStep={props.step}/>
         <FormControl step={props.step}/>
         <ProgressControl step={props.step} setStep={props.setStep}/>
     </div>

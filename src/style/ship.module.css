@@ -1,5 +1,8 @@
 /* form */
-
+.form {
+  width: 100%;
+  flex: 1;
+}
 /* title */
 .title {
   composes: title from "./address.module.css";
@@ -10,7 +13,7 @@
 
 /* radio */
 .radio_container {
-  width: 40%;
+  width: 80%;
 }
 .row {
   width: 100%;
