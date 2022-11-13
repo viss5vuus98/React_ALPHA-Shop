@@ -1,39 +1,25 @@
+//hook
 import { useState } from 'react';
+//components
 import LeftContent from './components/Contents/LeftContent';
 import RightContent from './components/Contents/RightContent'
+//css
 import styles from './style/app.module.css'
-
-const productData = [
-  {
-    id: '1',
-    name: '貓咪罐罐',
-    img: 'https://picsum.photos/300/300?text=1',
-    price: 100,
-    quantity: 2,
-  },
-  {
-    id: '2',
-    name: '貓咪干干',
-    img: 'https://picsum.photos/300/300?text=2',
-    price: 200,
-    quantity: 1,
-  },
-]
 
 function App() {
   let [step, setStep] = useState(1)
-  const [products, setProducts] = useState(productData)
+  let [ship, setShip] = useState(0)
 
   return (
     <div className={styles.main}>
       <LeftContent 
       step={step} 
-      setStep={setStep} 
-      products={products}
+      setStep={setStep}
+      ship={ship}
+      setShip={setShip} 
       />
-      <RightContent 
-      products={products}
-      setProducts={setProducts}
+      <RightContent
+       ship={ship}
       />
     </div>
   );

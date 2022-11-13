@@ -45,7 +45,7 @@ function Step({steps}){
 }
 
 export default function StepProgress({currentStep}){
-  const [ steps, setSteps ] = useState(stepList)
+  const [ steps, setSteps ] = useState([...stepList])
 
   useEffect(() => {
     const currentSteps = steps.map(step => {

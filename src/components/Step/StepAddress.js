@@ -11,7 +11,7 @@ export default function StepAddress(){
               <div className={ styles.select_container}>
                 <div className={styles.select_wrapper}>
                   <select className={styles.input}>
-                    <option value="mr" selected>先生</option>
+                    <option value="mr">先生</option>
                     <option value="ms">女士</option>
                     <option value="mx">不明</option>
                   </select>

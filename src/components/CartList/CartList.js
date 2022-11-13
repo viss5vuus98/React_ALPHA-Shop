@@ -1,5 +1,5 @@
 //hook
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 //css
 import productStyles from '../../style/products.module.css'
@@ -28,11 +28,18 @@ const productData = [
 
 
 const Product = (props) => {
-  //TODO://事件處理器 需要處理當前的按鈕目標去更新陣列
   const handleClickItem = (productId, action) => {
     const updateProducts = props.products.map(product => {
       if(product.id === productId){
-        return action === 'minus' ? {...product, quantity: product.quantity - 1} : {...product, quantity: product.quantity + 1}
+        return action === 'minus' ? {
+          ...product, 
+          quantity: product.quantity - 1,
+          currentPrice: product.price * (product.quantity - 1)
+        } : {
+          ...product,
+           quantity: product.quantity + 1,
+           currentPrice: product.price * (product.quantity + 1)          
+          }
       }
       return product
     })
@@ -50,12 +57,12 @@ const Product = (props) => {
             <img src={minusIcon} alt="minus" />
           </div>
           <p className={productStyles.count}>{product.quantity}</p>
-          <div onClick={() => handleClickItem(product.id, 'minus')} className={productStyles.icon}>
+          <div onClick={() => handleClickItem(product.id, 'plus')} className={productStyles.icon}>
             <img src={plusIcon} alt="plus" />
           </div>
         </div>
       </div>
-      <p className={productStyles.price}>${product.price}</p>
+      <p className={productStyles.price}>${product.currentPrice}</p>
     </div>
   )
   return (
@@ -63,8 +70,21 @@ const Product = (props) => {
   )
 }
 
-const CartList = (props) => {
-  const [products, setProducts] = useState(productData)
+const CartList = ({ship}) => {
+  const [products, setProducts] = useState(productData.map(product => {
+    return {
+      ...product,
+      currentPrice: product.quantity * product.price
+    }
+  }))
+  const [total, setTotal] = useState(0)
+
+  useEffect(() => {
+      const initPrice = products.reduce((accItem, currentItem) => {
+        return { totalPrice: accItem.currentPrice + currentItem.currentPrice }
+      })
+      setTotal(initPrice.totalPrice + ship)
+  },[products, ship])
 
   return (
     <div className={cartStyles.cart_container}>
@@ -76,7 +96,7 @@ const CartList = (props) => {
       </section>
       <section className={cartStyles.cart_info}>
         <p className={cartStyles.text}>小計</p>
-        <p className={cartStyles.price}>＄5322</p>
+        <p className={cartStyles.price}>＄{total}</p>
       </section>
     </div>
   )
