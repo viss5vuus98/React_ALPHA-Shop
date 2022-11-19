@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { Fragment } from 'react'
 import styles from '../../style/progress.module.css'
 
 const stepList = [
@@ -22,51 +22,35 @@ const stepList = [
   }
 ]
 
-function Step({steps}){
-
-  const renderStep = steps.map(step => {
-    if(step.id < stepList.length ){
-      return <>    
-              <div key={step.id} className={`${styles.step} ${step.state? styles.active : null}`}>
-                <div className={styles.circle}></div>
-                <div className={styles.label}>{step.label}</div>    
-              </div>
-              <span className={`${styles.connectLine} ${step.state? styles.active : null}`}></span>
-            </>
-    }
-      return <div key={step.id} className={`${styles.step} ${step.state? styles.active : null}`}>
-                <div className={styles.circle}></div>
-                <div className={styles.label}>{step.label}</div>    
-              </div>
-  })
-  return (
-    renderStep
-  )
-}
-
 export default function StepProgress({currentStep}){
-  const [ steps, setSteps ] = useState([...stepList])
-
-  useEffect(() => {
-    const currentSteps = steps.map(step => {
-      if(step.id <= currentStep){
-        return {
-          ...step,
-          state: true
-        }
-      }
-      return {
-        ...step,
-        state: false
-      }
-    })
-    setSteps(currentSteps)
-  }, [currentStep])
+  const steps = stepList.map(step => {
+    return {
+      ...step,
+      state: step.id <= currentStep
+    }
+  })
 
   return (
     <section className={styles.container}>
       <Step steps={steps}/>
     </section>
+  )
+}
+
+
+const Step = ({steps}) => {
+
+  const renderStep = steps.map(step => {
+      return <Fragment key={step.id}>    
+              <div className={`${styles.step} ${step.state? styles.active : null}`}>
+                <div className={styles.circle}></div>
+                <div className={styles.label}>{step.label}</div>    
+              </div>
+              { step.id < stepList.length && <span className={`${styles.connectLine} ${step.state? styles.active : null}`}></span> }
+            </Fragment>
+  })
+  return (
+    renderStep
   )
 }
 

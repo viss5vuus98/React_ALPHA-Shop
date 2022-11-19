@@ -10,7 +10,7 @@ const FormControl = (props) => {
     return <StepAddress/>
   }
   if(props.step === 2){
-    return <StepShip ship={props.ship} setShip={props.setShip}/>
+    return <StepShip handleChangeShip={props.handleChangeShip}/>
   }
   return <StepCreditCard/>
 }
@@ -21,8 +21,7 @@ export default function LeftContent(props) {
         <StepProgress currentStep={props.step}/>
         <FormControl 
         step={props.step}
-        ship={props.ship}
-        setShip={props.setShip}         
+        handleChangeShip={props.handleChangeShip}
         />
         <ProgressControl step={props.step} setStep={props.setStep}/>
     </div>

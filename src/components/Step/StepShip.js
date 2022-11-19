@@ -1,20 +1,22 @@
 import styles from '../../style/ship.module.css'
 
-export default function StepShip({ship, setShip}) {
-  const handleChangeShip = (ship) => {
-    setShip(ship)
-  }
+export default function StepShip({handleChangeShip}) {
 
   return (
       <form action="" className={styles.form}>
         <h3 className={styles.title}>運送方式</h3>
-        <section className={styles.input_section}>
+        <div className={styles.input_section}>
           <div className={styles.radio_container}>
             <div className={styles.row}>
               <div>
-                <input type="radio" name="phase" onChange={() => handleChangeShip(0)} checked/>
+                <input type="radio"
+                id="standard" 
+                name="phase" 
+                value="0" 
+                onChange={() => handleChangeShip(0)} 
+                defaultChecked={true}/>
                 <div className={styles.text}>
-                  <p>標準運送</p>
+                  <label for="standard">標準運送</label>
                   <span>約3~7個工作天</span>
                 </div>
               </div>
@@ -22,16 +24,20 @@ export default function StepShip({ship, setShip}) {
             </div>
             <div className={styles.row}>
               <div>
-                <input type="radio" name="phase" onChange={() => handleChangeShip(500)}/>
+                <input type="radio"
+                id="hdl" 
+                name="phase" 
+                value="500" 
+                onChange={() => handleChangeShip(500)}/>
                 <div className={styles.text}>
-                  <p>DHL 貨運</p>
+                  <label for="dhl">DHL 貨運</label>
                   <span>48小時內送達</span>
                 </div>
               </div>
               <span>$500</span>
             </div>
           </div>
-        </section>
+        </div>
       </form>
   )
 }
