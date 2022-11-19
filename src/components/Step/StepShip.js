@@ -1,6 +1,10 @@
+//context
+import { useCartContext } from '../Context/Context'
+//css
 import styles from './ship.module.css'
 
-export default function StepShip({handleChangeShip}) {
+export default function StepShip() {
+  const { handleChangeShip } = useCartContext()
 
   return (
       <form action="" className={styles.form}>
@@ -16,7 +20,7 @@ export default function StepShip({handleChangeShip}) {
                 onChange={() => handleChangeShip(0)} 
                 defaultChecked={true}/>
                 <div className={styles.text}>
-                  <label for="standard">標準運送</label>
+                  <label htmlFor="standard">標準運送</label>
                   <span>約3~7個工作天</span>
                 </div>
               </div>
@@ -30,7 +34,7 @@ export default function StepShip({handleChangeShip}) {
                 value="500" 
                 onChange={() => handleChangeShip(500)}/>
                 <div className={styles.text}>
-                  <label for="dhl">DHL 貨運</label>
+                  <label htmlFor="dhl">DHL 貨運</label>
                   <span>48小時內送達</span>
                 </div>
               </div>

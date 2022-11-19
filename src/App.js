@@ -1,5 +1,7 @@
 //hook
 import { useState } from 'react';
+//context
+import CartProvider from './components/Context/CartProvider';
 //components
 import LeftContent from './components/Contents/LeftContent';
 import RightContent from './components/Contents/RightContent'
@@ -7,24 +9,16 @@ import RightContent from './components/Contents/RightContent'
 import styles from './style/app.module.css'
 
 function App() {
-  let [step, setStep] = useState(1)
-  let [ship, setShip] = useState(0)
-  function  handleChangeShip(ship) {
-    setShip(ship)
-  }
+
   return (
-    <div className={styles.main}>
-      <LeftContent 
-      step={step} 
-      setStep={setStep}
-      ship={ship}
-      setShip={setShip}
-      handleChangeShip={handleChangeShip}
-      />
-      <RightContent
-       ship={ship}
-      />
-    </div>
+    <CartProvider>
+        <div className={styles.main}>
+        <LeftContent 
+        />
+        <RightContent
+        />
+      </div>
+    </CartProvider>
   );
 }
 

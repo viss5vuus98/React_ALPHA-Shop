@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import StepProgress from '../Step/StepProgress'
 import StepAddress from '../Step/StepAddress'
 import StepCreditCard from '../Step/StepCreditCard'
@@ -10,20 +11,32 @@ const FormControl = (props) => {
     return <StepAddress/>
   }
   if(props.step === 2){
-    return <StepShip handleChangeShip={props.handleChangeShip}/>
+    return <StepShip/>
   }
   return <StepCreditCard/>
 }
 
-export default function LeftContent(props) {
+export default function LeftContent() {
+  let [step, setStep] = useState(1)
+
+  function handleProgress(e){
+    e.preventDefault();
+    if(e.target.innerText === '上一步'){
+      setStep(step - 1)
+      return
+    }
+
+    setStep(step >= 3 ? 3 : step + 1)
+    return
+  }
+
   return (
     <div className={styles.left_content}>
-        <StepProgress currentStep={props.step}/>
+        <StepProgress currentStep={step}/>
         <FormControl 
-        step={props.step}
-        handleChangeShip={props.handleChangeShip}
+        step={step}
         />
-        <ProgressControl step={props.step} setStep={props.setStep}/>
+        <ProgressControl step={step} setStep={setStep} handleProgress={handleProgress}/>
     </div>
   )
 }

@@ -1,40 +1,23 @@
 //hook
 import { useState } from 'react'
 
+//context
+import { useCartContext } from '../Context/Context'
+
 //components
 import CartItem from './CartItem'
 
 //css
 import cartStyles from './cartList.module.css'
 
-const productData = [
-  {
-    id: '1',
-    name: '貓咪罐罐',
-    img: 'https://picsum.photos/300/300?text=1',
-    price: 100,
-    quantity: 2,
-  },
-  {
-    id: '2',
-    name: '貓咪干干',
-    img: 'https://picsum.photos/300/300?text=2',
-    price: 200,
-    quantity: 1,
-  },
-]
+//data
+import { initialData } from '../Context/CartProvider'
 
 
+const CartList = () => {
+  const [products] = useState(initialData)
+  const { ship, total, handleUpdateTotal } = useCartContext()
 
-const CartList = ({ ship = 0 }) => {
-  const [products] = useState(productData)
-  const [total, setTotal] = useState(products.map(product => product.price * product.quantity)
-  .reduce((accItem, currentItem) => accItem + currentItem))
-  
-  function handleUpdateTotal(currentPrice){
-    setTotal(total + (currentPrice))
-  }
-  
   return (
     <Cart 
     total={total}
