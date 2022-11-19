@@ -3,7 +3,7 @@ import StepAddress from '../Step/StepAddress'
 import StepCreditCard from '../Step/StepCreditCard'
 import StepShip from '../Step/StepShip'
 import ProgressControl from '../ProgressControl/ProgressControl'
-import styles from '../../style/content.module.css'
+import styles from './content.module.css'
 
 const FormControl = (props) => {
   if(props.step === 1){

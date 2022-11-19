@@ -1,4 +1,4 @@
-import styles from '../../style/creditCard.module.css'
+import styles from './creditCard.module.css'
 
 export default function StepCreditCard() {
   return (

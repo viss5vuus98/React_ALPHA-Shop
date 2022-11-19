@@ -1,4 +1,5 @@
-import styles from '../../style/address.module.css'
+//css
+import styles from './address.module.css'
 
 export default function StepAddress(){
   return (

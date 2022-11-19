@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import styles from '../../style/progress.module.css'
+import styles from './stepProgress.module.css'
 
 const stepList = [
   {

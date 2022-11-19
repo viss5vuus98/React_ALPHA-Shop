@@ -1,4 +1,4 @@
-import styles from '../../style/progressControl.module.css'
+import styles from './progressControl.module.css'
 import leftArrow from '../../assets/icons/left-arrow.svg';
 import rightArrowIco from '../../assets/icons/right-arrow.svg';
 

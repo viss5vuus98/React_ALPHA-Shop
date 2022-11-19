@@ -1,4 +1,4 @@
-import styles from '../../style/ship.module.css'
+import styles from './ship.module.css'
 
 export default function StepShip({handleChangeShip}) {
 

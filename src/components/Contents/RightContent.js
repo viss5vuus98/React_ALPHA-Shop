@@ -1,5 +1,5 @@
 import CartList from '../CartList/CartList'
-import styles from '../../style/content.module.css'
+import styles from './content.module.css'
 
 export default function RightContent({ship}) {
   return (
