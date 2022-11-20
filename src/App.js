@@ -1,5 +1,3 @@
-//hook
-import { useState } from 'react';
 //context
 import CartProvider from './components/Context/CartProvider';
 //components

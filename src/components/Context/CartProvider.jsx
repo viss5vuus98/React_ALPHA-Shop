@@ -20,10 +20,14 @@ export const initialData = [
 ]
 
 const CartProvider = ({children}) => {
+  //total state
+  const initialTotal = initialData.reduce((total, product) => {
+    return total + product.price * product.quantity
+  }, 0)
+  const [total, setTotal] = useState(initialTotal)
+  //ship state
   let [ship, setShip] = useState(0)
-  const [total, setTotal] = useState(initialData.map(product => product.price * product.quantity)
-  .reduce((accItem, currentItem) => accItem + currentItem))
-
+  //output data state
   const [formData, setFormData] = useState({
     info: {
       name: '',

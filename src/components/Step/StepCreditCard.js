@@ -1,7 +1,6 @@
 //hook
-import { useState } from "react";
 import { useCartContext } from "../Context/Context"
-
+//css
 import styles from './creditCard.module.css'
 
 export default function StepCreditCard() {
