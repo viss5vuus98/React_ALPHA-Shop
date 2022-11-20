@@ -1,4 +1,8 @@
+//hook
+import { useCartContext } from '../Context/Context';
+//css
 import styles from './progressControl.module.css'
+//assets
 import leftArrow from '../../assets/icons/left-arrow.svg';
 import rightArrowIco from '../../assets/icons/right-arrow.svg';
 
@@ -12,9 +16,10 @@ export default function ProgressControl({ step, handleProgress }) {
 }
 
 const Button = ({step, handleProgress}) => {
+  const { handleSubmit } = useCartContext()
   return (
     <section className={styles.group}>
-        <button className={styles.next} onClick={handleProgress}>
+        <button className={styles.next} onClick={(e) => {handleProgress(e); if(step === 3){ handleSubmit() };}}>
           <p>{step === 3 ? '確認下單': '下一步'}</p>
           <img src={rightArrowIco} className={`${styles.icon} ${styles.right_icon}`} alt="next" />
         </button>

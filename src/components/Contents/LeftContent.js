@@ -25,7 +25,6 @@ export default function LeftContent() {
       setStep(step - 1)
       return
     }
-
     setStep(step >= 3 ? 3 : step + 1)
     return
   }
@@ -33,10 +32,10 @@ export default function LeftContent() {
   return (
     <div className={styles.left_content}>
         <StepProgress currentStep={step}/>
-        <FormControl 
-        step={step}
-        />
-        <ProgressControl step={step} setStep={setStep} handleProgress={handleProgress}/>
+          <FormControl
+          step={step}
+          />
+          <ProgressControl step={step} setStep={setStep} handleProgress={handleProgress}/>
     </div>
   )
 }
